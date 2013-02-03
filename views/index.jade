@@ -1,0 +1,83 @@
+!!!
+html
+
+	head
+
+		title London Hack
+		link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.1/css/bootstrap.min.css')
+		!= css('app')
+
+	body
+
+		#dz-root
+
+		.container
+	
+			if logged_in
+				
+				.loading Loading
+				
+				.lobby
+
+					h1.page-header
+
+						span.lead.text-info.pull-right bit.ly/hacktunes
+
+						| HackTunes
+
+					p.lead Sit tight, we're waiting for some more people to join. We'll let you know when you can start playing.
+
+					a.btn.btn-large.btn-primary
+						| Start game 
+						i.icon-arrow-right.icon-white
+
+				.playground
+
+					h1 What's playing?
+
+					.songs
+
+					.correct
+
+				.results
+
+					h1 Game over!
+					p.lead
+						strong.user
+						|  got it in 
+						strong.time
+						|  seconds.
+
+					hr
+
+					p
+						| The correct answer was 
+						strong.title
+						|  by 
+						strong.artist
+						| .
+
+					hr
+
+					img(src='http://bestclipartblog.com/clipart-pics/crown-clip-art-1.png', width='150')
+					br
+					img(src='http://placekitten.com/50/50', width='150')
+
+			else
+
+				h1.page-header HackTunes
+				p.lead Log your bad self in. Just press the button below.
+				a.btn.btn-primary(href='/auth')
+					| Login 
+					i.icon-off.icon-white
+
+		if logged_in
+			script
+				var user = !{user};
+				var dz_id = #{dz_id};
+				var dz_channel = '#{dz_channel}';
+
+			script(src=now_url)
+			script(src='//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js')
+			script(src='http://cdn-files.deezer.com/js/min/dz.js')
+			!= js('app')
